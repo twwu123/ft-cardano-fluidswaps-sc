@@ -1,0 +1,13 @@
+OP_IF
+  ${bitcoin.script.number.encode(lockTime).toString('hex')}
+  OP_CHECKLOCKTIMEVERIFY
+  OP_DROP
+  ${alice.publicKey.toString('hex')}
+  OP_CHECKSIG
+OP_ELSE
+  ${bob.publicKey.toString('hex')}
+  OP_CHECKSIGVERIFY
+  ${Buffer.from(hashPassword, 'hex').toString('hex')}
+  OP_HASH256
+  OP_EQUALVERIFY
+OP_ENDIF
