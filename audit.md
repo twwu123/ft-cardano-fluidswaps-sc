@@ -2,6 +2,10 @@
 
 Initial comments
 
+### Specification
+
+The specification mostly describes a simple atomic swap between `Cardano and Bitcoin` and `Cardano and Ethereum`.
+
 ### swap.ak
 
 - Simple atomic swap implementation, small recommendation to put parameterized variables into the datum, not necessary, but reduces the number of addresses that must be tracked by backend later on.
