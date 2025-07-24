@@ -55,7 +55,7 @@ validator swap(
   }
 }
 
-fn validate_tx_end(tx: Transaction, deadline: Int) {
+pub fn validate_tx_end(tx: Transaction, deadline: Int) {
   trace cbor.diagnostic(deadline)
   when tx.validity_range.upper_bound.bound_type is {
     Finite(end) -> end < deadline
@@ -63,7 +63,7 @@ fn validate_tx_end(tx: Transaction, deadline: Int) {
   }
 }
 
-fn get_hash_from_bytearray_btc(byte: ByteArray) {
+pub fn get_hash_from_bytearray_btc(byte: ByteArray) {
   //this is what I sign
   let concat_message =
     string.to_bytearray(bytearray.to_hex(sha2_256(sha2_256(byte))))
@@ -81,7 +81,7 @@ fn get_hash_from_bytearray_btc(byte: ByteArray) {
   sha2_256(sha2_256(finalized))
 }
 
-fn get_hash_from_bytearray_eth(byte: ByteArray) {
+pub fn get_hash_from_bytearray_eth(byte: ByteArray) {
   //this is what I sign
   let concat_message =
     string.to_bytearray(bytearray.to_hex(sha2_256(sha2_256(byte))))
@@ -98,6 +98,10 @@ fn get_hash_from_bytearray_eth(byte: ByteArray) {
   keccak_256(finalized)
 }
 
-fn validate_signature_key(publicKey: ByteArray, msg: ByteArray, sig: ByteArray) {
+pub fn validate_signature_key(
+  publicKey: ByteArray,
+  msg: ByteArray,
+  sig: ByteArray,
+) {
   builtin.verify_ecdsa_secp256k1_signature(publicKey, msg, sig)
 }

@@ -33,7 +33,7 @@ validator global(pubKey: ByteArray) {
     //we'll build the message like this,txid+index+unit+amount+pubkey+stakekeys
 
     when redeemer is {
-      Send(
+      Send {
         signature,
         utxos,
         policy,
@@ -51,7 +51,7 @@ validator global(pubKey: ByteArray) {
         payment_index,
         fee,
         signer,
-      ) -> {
+      } -> {
         let list_utxos =
           list.foldr(
             utxos,
