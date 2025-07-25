@@ -21,3 +21,5 @@ The specification mostly describes a simple atomic swap between `Cardano and Bit
 - This may be out of the scope of this Audit, but I have included a proof of concept of an implementation of a validator that could be used as the "smart account".
 
 - Biggest issue I have with the current implementation of the "smart accounts" is that the message appears to be some level of instructions that will be signed by the ethereum / bitcoin keys, but it's very difficult to identify exactly what each subsequent byte means. In particular, the `Send` instruction includes an incredible amount of information, and you have to reason about whether the final transaction accurately represents the signed `Send` instruction.
+
+- Spending multiple inputs from the same "smart account" results in huge amount of duplicated checks, if possible, delegate the checks to a withdrawal script.
